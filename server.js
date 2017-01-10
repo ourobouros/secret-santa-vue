@@ -15,6 +15,10 @@ app.set('views', path.join(__dirname, 'dist'));
 app.engine('html', require('ejs').renderFile)
 app.set('view engine', 'html')
 
+if(process.env.NODE_ENV == "development"){
+	app.use(require('morgan')(':status | :method :url -- :response-time ms'));
+}
+
 
 // serve pure static assets
 var staticPath = path.posix.join(config.build.assetsPublicPath, config.build.assetsSubDirectory)

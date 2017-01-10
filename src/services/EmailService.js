@@ -1,9 +1,9 @@
 import Vue from 'vue'
 var email = {}
 
-email.sendEmails = async (pairs) => {
+email.sendEmails = (pairs) => {
   var mails = []
-  _.each(pairs, (guy) => {
+  pairs.forEach((guy) => {
     var pair = {
       from: {
         name: guy.name,
@@ -19,19 +19,18 @@ email.sendEmails = async (pairs) => {
   })
 
   var data = JSON.stringify(mails)
-  new Promise((resolve, reject) => {
+  return new Promise((resolve, reject) => {
     Vue.http.post('/enviar', data)
 		.then((result) => {
-  if (result && result.status == 200) {
-    resolve(result.data)
-  } else {
-    reject(result)
-  }
-}, (error) => {
-  console.log('My response is, ', error)
-  reject(error)
-}
-		)
+          if (result && result.status == 200) {
+            resolve(result.data)
+          } else {
+            reject(result)
+          }
+        }, (error) => {
+          console.log('My response is, ', error)
+          reject(error)
+        })
   })
 }
 

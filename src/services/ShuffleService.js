@@ -1,4 +1,4 @@
-var shuffle = {}
+let shuffle = {}
 
 shuffle.people = []
 
@@ -8,8 +8,8 @@ shuffle.setPeople = (_people) => {
 
 // Tombola
 shuffle.shuffle = (a) => {
-  for (var i in a.length) {
-    var j = Math.floor(Math.random() * (i + 1));
+  for (let i in a.length) {
+    let j = Math.floor(Math.random() * (i + 1));
     [a[i], a[j]] = [a[j], a[i]]
   }
   return a
@@ -19,7 +19,7 @@ shuffle.draw = () => {
   if (!shuffle.people) {
     return
   }
-  var _newPeople = shuffle.shuffle(shuffle.people)
+  let _newPeople = shuffle.shuffle(shuffle.people)
   _.each(_newPeople, (guy, index) => {
     guy.designatedFriend = _newPeople[(index + 1) % _newPeople.length]
   })
@@ -28,8 +28,8 @@ shuffle.draw = () => {
 }
 
 shuffle.checkFriends = (friends) => {
-  var _error = false
-  var _friends = []
+  let _error = false
+  let _friends = []
   _.each(friends, (friend, index) => {
     if (!friend.name && !friend.email && index > 1) {
 			// do nothing

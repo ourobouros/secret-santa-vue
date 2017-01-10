@@ -74,12 +74,12 @@ export default {
     },
     shuffle: function () {
     	this.errors.friends = false
-		var result = ShuffleService.checkFriends(this.friends)
+		let result = ShuffleService.checkFriends(this.friends)
 		this.friends = result.friends
 
 		if (!result.error) {
 			ShuffleService.setPeople(result.friends);
-			EmailService.sendEmails(this.draw())
+			EmailService.sendEmails(ShuffleService.draw())
 			.then((result) => {
 				this.$router.push({name:'end'});
 			})
