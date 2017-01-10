@@ -1,6 +1,8 @@
 <template lang="pug">
 	.secret_wrapper
 		#snow
+		.secret
+
 		.friends
 			.friend.friend-animation(
 				v-for="(friend, key) in friends"
@@ -17,18 +19,18 @@
 					input(
 						v-model="friend.email"
 						type="text",
-						:placeholder="friend.main ? 'tu email': 'email'"
+						:placeholder="friend.main ? 'your email': 'email'"
 					)
 					input(
 						v-model="friend.name"
 						type="text",
-						:placeholder="friend.main ? 'tu nombre': 'nombre'"
+						:placeholder="friend.main ? 'your name': 'name'"
 					)
 
 		button.btn_friend(
 		v-on:click="addFriend()"
 		)
-			| + AÑADIR A UN AMIGO
+			| + ADD A FRIEND
 
 		.friends__error.animated.shake(v-if="errors.friends") Hey, falta rellenar algún email/nombre!
 		.city_picker__error.shake.animated(v-if="errors.city") No has seleccionado ninguna ciudad! :(

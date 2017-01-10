@@ -7,33 +7,32 @@
 					.step__number 1
 					.step__image.step__image__sobre
 					.step__text
-						| Añade tu
+						| Add your
 						span.bold &nbsp;email&nbsp;
-						| y el de
-						span.bold &nbsp;tus amigos&nbsp;
+						| and the one from
+						span.bold &nbsp;your friends&nbsp;
 
 
 				.step
 					.step__number 2
 					.step__image.step__image__gente
 					.step__text
-						| A cada uno se le adjudicará un amigo de
-						span.bold &nbsp;forma aleatoria&nbsp;
+						| Each one will have a secret pair chosen in a
+						span.bold &nbsp;random way&nbsp;
 
 				.step
 					.step__number 3
 					.step__image.step__image__mailbox
 					.step__text
-						| Todos recibiréis un
-						span.bold &nbsp;email&nbsp;
-						| con el
-						span.bold &nbsp;"amigo invisible"&nbsp;
-						| que os haya tocado
+						| All of you will receive
+						span.bold &nbsp;an email&nbsp;
+						| with your
+						span.bold &nbsp;"secret santa"&nbsp;
 
 			button.btn_start(
 				@click="start"
 			)
-				| Empezar a
+				| Start
 
 </template>
 

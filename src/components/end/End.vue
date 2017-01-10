@@ -2,13 +2,13 @@
 	.filling
 		#snow
 		.end
-			.thanks ¡Gracias por participar!
+			.thanks Thanks for participating!
 			.subtitle
-				| Cada uno de tus amigos recibirá
-				span.bold &nbsp; un email &nbsp;
-				| con el
-				span.bold &nbsp; nombre de la persona &nbsp;
-				|a la que deberá hacer un regalo.
+				| Each one of your friends will receive
+				span.bold &nbsp; an email &nbsp;
+				| with the
+				span.bold &nbsp; name of the person &nbsp;
+				|to which you have to give a present.
 
 			.regalos
 
