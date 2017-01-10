@@ -1,16 +1,17 @@
-const mailgun = require('mailgun-js')({apiKey: 'key-bdc9654b2457a9a45b2d98435896d447', domain: 'glovoapp.com'})
+const mailgun = require('mailgun-js')({apiKey: 'YOUR_MAILGUN_API_KEY', domain: 'YOUR_MAILGUN_DOMAIN'})
 const _ = require('lodash')
-const admin = require('firebase-admin')
 const path = require('path')
 const fs = require('fs')
 const handlebars = require('handlebars')
 
-// Firebase
-admin.initializeApp({
-  credential: admin.credential.cert(path.join(__dirname, 'firebase-serviceAccountKey.json')),
-  databaseURL: 'https://glovo-sercret-santa.firebaseio.com'
-})
-const db = admin.database()
+// Firebase - uncomment to enable firebase support
+
+// const admin = require('firebase-admin')
+// admin.initializeApp({
+//   credential: admin.credential.cert(path.join(__dirname, 'firebase-serviceAccountKey.json')),
+//   databaseURL: 'YOUR_FIREBASE_DB_URL'
+// })
+// const db = admin.database()
 
 
 exports.sendMails = (req, res) => {
@@ -32,20 +33,24 @@ exports.sendMails = (req, res) => {
 		// mails.append(data);
     mailgun.messages().send(data, function (error, body) {
       if (error) return
-      saveEmail(pair.from, pair.to)
+      // uncomment to enable firebase support
+
+      // saveEmail(pair.from, pair.to)
     })
   })
 
-  res.json('Everything great')
+  res.json('Everything great');
 
-  function saveEmail (user, friend) {
-    db.ref('santas/' + new Date().getTime()).set({
-      name: user['name'],
-      friend_name: friend['name'],
-      email: user['email'],
-      city: user['city']
-    })
-  }
+  // uncomment to enable firebase support
+
+  // function saveEmail (user, friend) {
+  //   db.ref('santas/' + new Date().getTime()).set({
+  //     name: user['name'],
+  //     friend_name: friend['name'],
+  //     email: user['email'],
+  //     city: user['city']
+  //   })
+  // }
 
   function getTemplate() {
     const filePath = path.join(__dirname, '../static/templates/email.html')
